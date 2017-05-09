@@ -1,0 +1,22 @@
+{
+  "accounts" : [
+    {
+      "name" : "Chase Checking Account",
+      "id" : "account-id1",
+      "zipcode" : "94110",
+      "accountType" : "checking",
+      "status" : "open",
+      "balance" : 1200.50,
+      "accountHolder" : "Steven Donnelly"
+    },
+    {
+      "name" : "Wells Fargo Savings Account",
+      "id" : "account-id2",
+      "zipcode" : "95123",
+      "accountType" : "savings",
+      "status" : "open",
+      "balance" : 20156.12,
+      "accountHolder" : "Prachi Shah"
+    }
+  ]
+}
