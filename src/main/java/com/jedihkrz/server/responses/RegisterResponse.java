@@ -5,6 +5,7 @@ package com.jedihkrz.server.responses;
  */
 public class RegisterResponse {
     private String status;
+    private String faceId;
 
     public String getStatus() {
         return status;
@@ -12,5 +13,13 @@ public class RegisterResponse {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getFaceId() {
+        return faceId;
+    }
+
+    public void setFaceId(String faceId) {
+        this.faceId = faceId;
     }
 }

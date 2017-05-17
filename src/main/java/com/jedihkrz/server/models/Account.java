@@ -11,6 +11,7 @@ public class Account {
     private String status;
     private double balance;
     private String accountHolder;
+    private String faceId;
 
 
     public String getName() {
@@ -67,5 +68,13 @@ public class Account {
 
     public void setAccountHolder(String accountHolder) {
         this.accountHolder = accountHolder;
+    }
+
+    public String getFaceId() {
+        return faceId;
+    }
+
+    public void setFaceId(String faceId) {
+        this.faceId = faceId;
     }
 }
