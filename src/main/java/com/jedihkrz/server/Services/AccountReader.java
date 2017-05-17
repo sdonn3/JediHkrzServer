@@ -1,4 +1,4 @@
-package com.jedihkrz.server.Services;
+package com.jedihkrz.server.services;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -7,7 +7,6 @@ import com.jedihkrz.server.models.AccountList;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
