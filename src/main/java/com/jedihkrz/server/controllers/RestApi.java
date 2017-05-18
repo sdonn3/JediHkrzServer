@@ -34,7 +34,6 @@ public class RestApi implements SparkApplication {
     public void init() {
         Spark.post("/getaccount", (request, response) -> {
             String userId = request.queryParams("user");
-            boolean authenticated = false;
 
             DetectService detectService = new DetectService();
             String testFaceId = detectService.detect(request.bodyAsBytes());    // Gets the FaceId of the image
@@ -45,14 +44,17 @@ public class RestApi implements SparkApplication {
                 String userFaceId = compareAccount.getFaceId();
                 VerifyService verifyService = new VerifyService();
                 if (verifyService.verify(userFaceId, testFaceId)) {             // Verifies that the image is associated with a registered user
-                    authenticated = true;
-                    log.info("Authenticated for " + userId);
+                    log.info(userId + " authenticated");
                     getAccountResponse.setStatus("success");
+                }
+                else {
+                    getAccountResponse.setStatus("failure");
+                    log.warn("User authentication failed. " + testFaceId + " is not same person as " + userFaceId);
                 }
 
             } else {
                 getAccountResponse.setStatus("failure");
-                log.warn("User authentication failed. Try again.");
+                log.warn("User authentication failed. Make sure user is registered. Test face id: " + testFaceId);
             }
 
             return getAccountResponse;
@@ -69,10 +71,10 @@ public class RestApi implements SparkApplication {
 
             RegisterResponse registerResponse = new RegisterResponse();
 
-            log.info("User Registration Successful!");
+            log.info("User Registration Successful! for face Id " + faceId);
 
-            registerResponse.setStatus("User Registration Successful!");
-            return registerResponse.getStatus();
+            registerResponse.setStatus("success");
+            return registerResponse;
         }, new JsonTransformer());
 
         Spark.get("/clear", (request, response) -> {

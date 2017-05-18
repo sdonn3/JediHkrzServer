@@ -3,6 +3,8 @@ package com.jedihkrz.server.services;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.jedihkrz.server.responses.DetectResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,6 +16,8 @@ import java.net.URL;
  * Created by steven.donnelly on 5/17/17.
  */
 public class DetectService {
+    static private final Logger log = LoggerFactory.getLogger(DetectService.class);
+
     private static final String detectURL = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect";
     private static final String urlParams = "?returnFaceId=true&returnFaceLandmarks=false";
     private static final String subscriptionKey = "fed774d634494cde827d53ccca65efd4";
@@ -52,7 +56,7 @@ public class DetectService {
             return returnId;
 
         } catch (Exception e){
-
+            log.error("Could not detect properly" + e.getMessage());
         }
 
         return "";

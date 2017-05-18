@@ -18,7 +18,7 @@ public class AccountReader {
 
     public List<Account> getAccountsFromJson() throws FileNotFoundException{
         Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new FileReader("/tmp/accounts/Accounts.json"));
+        JsonReader reader = new JsonReader(new FileReader("/usr/local/jboss6/standalone/configuration/accounts/Accounts.json"));
         AccountList accountList = gson.fromJson(reader, AccountList.class);
         return accountList.getAccountList();
     }
